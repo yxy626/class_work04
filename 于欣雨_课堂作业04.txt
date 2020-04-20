@@ -1,0 +1,19 @@
+show schemas;
+use test1;
+create TABLE design(des_id int not null,des_name varchar(50) not null,primary key(des_id));
+
+create TABLE cour(cour_id int not null,course_name varchar(50) not null,primary key(cour_id));
+
+create TABLE tea(tea_id int not null,tea_name varchar(50) not null,primary key(tea_id),major_id int,INDEX index_tea_name(tea_name(20)),constraint tea_cour foreign key(major_id) references cour(cour_id));
+
+create TABLE de_tea(detea_id int not null,tea2_name varchar(50) not null,major_id2 int,constraint detea_design foreign key(major_id2)references design(des_id));
+
+create TABLE stu(stu_id int not null,stu_name varchar(50) not null,primary key(stu_id),INDEX index_stuname(stu_name(50)),maj_id int not null,maj_id2 int not null,maj_id3 int not null,constraint stu_tea foreign key(maj_id) references tea(tea_id),constraint stu_cour foreign key(maj_id2) references cour(cour_id),constraint stu_des foreign key(maj_id3) references design(des_id));
+
+
+
+
+
+
+
+
